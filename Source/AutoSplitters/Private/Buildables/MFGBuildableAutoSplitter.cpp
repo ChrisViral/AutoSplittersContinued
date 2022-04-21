@@ -2,7 +2,9 @@
 
 #include "Buildables/MFGBuildableAutoSplitter.h"
 
+#include <algorithm>
 #include <numeric>
+#include <tuple>
 
 #include "AutoSplittersLog.h"
 #include "AutoSplittersModule.h"

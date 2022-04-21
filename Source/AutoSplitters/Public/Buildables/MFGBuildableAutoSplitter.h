@@ -3,6 +3,7 @@
 #pragma once
 
 #include <array>
+#include <tuple>
 
 #include "FGPlayerController.h"
 #include "FGFactoryConnectionComponent.h"

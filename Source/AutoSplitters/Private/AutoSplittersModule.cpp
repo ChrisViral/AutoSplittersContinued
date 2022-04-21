@@ -16,6 +16,8 @@
 #include "Resources/FGBuildingDescriptor.h"
 #include "ModLoading/PluginModuleLoader.h"
 
+DEFINE_LOG_CATEGORY(LogGame);
+
 // #pragma optimize( "", off )
 
 void FAutoSplittersModule::OnSplitterLoadedFromSaveGame(AMFGBuildableAutoSplitter* Splitter)
@@ -55,9 +57,10 @@ void FAutoSplittersModule::ReplacePreComponentFixSplitters(UWorld* World, AAutoS
 		if (RecipeInfo.OwnedByModReference != FName("AutoSplitters"))
 			continue;
 		auto Recipe = Cast<UFGRecipe>(RecipeInfo.RegisteredObject->GetDefaultObject());
-		if (Recipe->mProduct.Num() != 1)
+		auto Products = Recipe->GetProducts();
+		if (Products.Num() != 1)
 			continue;
-		auto BuildingDescriptor = Recipe->mProduct[0].ItemClass->GetDefaultObject<UFGBuildingDescriptor>();
+		auto BuildingDescriptor = Products[0].ItemClass->GetDefaultObject<UFGBuildingDescriptor>();
 		if (!BuildingDescriptor)
 			continue;
 

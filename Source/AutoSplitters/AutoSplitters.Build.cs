@@ -45,13 +45,12 @@ public class AutoSplitters : ModuleRules
 				"Json",
 				"SML",
 				// ... add other public dependencies that you statically link with here ...
+                "FactoryGame",
 			}
 		);
-			
-		PublicDependencyModuleNames.AddRange(new string[] {"FactoryGame", "SML"});
-			
-		
-		PrivateDependencyModuleNames.AddRange(
+
+
+        PrivateDependencyModuleNames.AddRange(
 			new string[]
 			{
 				"RenderCore",
