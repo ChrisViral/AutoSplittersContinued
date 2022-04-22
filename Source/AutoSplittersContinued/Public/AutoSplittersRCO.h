@@ -13,7 +13,7 @@ class AMFGBuildableAutoSplitter;
  *
  */
 UCLASS(NotBlueprintable)
-class AUTOSPLITTERS_API UAutoSplittersRCO : public UFGRemoteCallObject
+class AUTOSPLITTERSCONTINUED_API UAutoSplittersRCO : public UFGRemoteCallObject
 {
     GENERATED_BODY()
 

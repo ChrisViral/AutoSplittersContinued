@@ -6,7 +6,7 @@
 
 #include "CoreMinimal.h"
 #include "Hologram/FGAttachmentSplitterHologram.h"
-#include "AutoSplittersModule.h"
+#include "AutoSplittersContinuedModule.h"
 
 #include "MFGAutoSplitterHologram.generated.h"
 
@@ -14,11 +14,11 @@
  *
  */
 UCLASS()
-class AUTOSPLITTERS_API AMFGAutoSplitterHologram : public AFGAttachmentSplitterHologram
+class AUTOSPLITTERSCONTINUED_API AMFGAutoSplitterHologram : public AFGAttachmentSplitterHologram
 {
 	GENERATED_BODY()
 
-	friend class FAutoSplittersModule;
+	friend class FAutoSplittersContinuedModule;
 
 	// ReSharper disable once CppUE4ProbableMemoryIssuesWithUObjectsInContainer
 	TArray<UFGFactoryConnectionComponent*> mPreUpgradeConnections;

@@ -44,7 +44,7 @@ void AAutoSplittersSubsystem::Init()
     // figure out if this a loaded save file or a new session
     if (GetLoadedModVersion().Compare(New_Session) == 0)
     {
-        if (FAutoSplittersModule::Get()->HaveLoadedSplitters())
+        if (FAutoSplittersContinuedModule::Get()->HaveLoadedSplitters())
         {
             // subsystem was not loaded from save, we need to fix this up manually
             mLoadedModVersion = ModVersion_Legacy;

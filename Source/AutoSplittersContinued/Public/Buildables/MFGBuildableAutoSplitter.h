@@ -10,7 +10,7 @@
 #include "Buildables/FGBuildableAttachmentSplitter.h"
 #include "Buildables/FGBuildableConveyorBase.h"
 
-#include "AutoSplittersModule.h"
+#include "AutoSplittersContinuedModule.h"
 #include "AutoSplittersRCO.h"
 #include "AutoSplittersLog.h"
 #include "util/BitField.h"
@@ -61,7 +61,7 @@ struct is_enum_bitfield<EAutoSplitterTransientFlags> : std::true_type{};
 
 
 USTRUCT(BlueprintType)
-struct AUTOSPLITTERS_API FMFGBuildableAutoSplitterReplicatedProperties
+struct AUTOSPLITTERSCONTINUED_API FMFGBuildableAutoSplitterReplicatedProperties
 {
     GENERATED_BODY()
 
@@ -106,7 +106,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAMFGBuildableAutoSplitterOnStateCha
  *
  */
 UCLASS()
-class AUTOSPLITTERS_API AMFGBuildableAutoSplitter : public AFGBuildableAttachmentSplitter
+class AUTOSPLITTERSCONTINUED_API AMFGBuildableAutoSplitter : public AFGBuildableAttachmentSplitter
 {
     GENERATED_BODY()
 

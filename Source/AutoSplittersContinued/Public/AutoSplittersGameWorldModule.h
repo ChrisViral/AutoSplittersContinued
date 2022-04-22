@@ -12,7 +12,7 @@
  *
  */
 UCLASS()
-class AUTOSPLITTERS_API UAutoSplittersGameWorldModule : public UGameWorldModule
+class AUTOSPLITTERSCONTINUED_API UAutoSplittersGameWorldModule : public UGameWorldModule
 {
     GENERATED_BODY()
 

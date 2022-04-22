@@ -7,7 +7,7 @@
 #include <tuple>
 
 #include "AutoSplittersLog.h"
-#include "AutoSplittersModule.h"
+#include "AutoSplittersContinuedModule.h"
 #include "FGFactoryConnectionComponent.h"
 #include "Buildables/FGBuildableConveyorBase.h"
 #include "Subsystem/AutoSplittersSubsystem.h"
@@ -303,7 +303,7 @@ void AMFGBuildableAutoSplitter::PostLoadGame_Implementation(int32 saveVersion, i
 
     SetSplitterFlag(ETransient::NeedsLoadedSplitterProcessing);
 
-    FAutoSplittersModule::Get()->OnSplitterLoadedFromSaveGame(this);
+    FAutoSplittersContinuedModule::Get()->OnSplitterLoadedFromSaveGame(this);
 }
 
 UClass* AMFGBuildableAutoSplitter::GetReplicationDetailActorClass() const
@@ -355,7 +355,7 @@ void AMFGBuildableAutoSplitter::BeginPlay()
             default:
                 {
                     UE_LOG(LogAutoSplitters,Error,TEXT("AutoSplitter %s was saved with an unsupported serialization version, will be removed"),*GetName());
-                    FAutoSplittersModule::Get()->ScheduleDismantle(this);
+                    FAutoSplittersContinuedModule::Get()->ScheduleDismantle(this);
                 }
             }
 
@@ -854,7 +854,7 @@ void AMFGBuildableAutoSplitter::Server_ReplicationEnabledTimeout()
 void AMFGBuildableAutoSplitter::FixupConnections()
 {
 
-    auto Module = FModuleManager::GetModulePtr<FAutoSplittersModule>("AutoSplitters");
+    auto Module = FModuleManager::GetModulePtr<FAutoSplittersContinuedModule>("AutoSplittersContinued");
 
     TInlineComponentArray<UFGFactoryConnectionComponent*, 6> Connections;
     GetComponents(Connections);

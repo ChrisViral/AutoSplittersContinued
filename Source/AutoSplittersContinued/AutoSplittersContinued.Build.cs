@@ -4,9 +4,9 @@ using UnrealBuildTool;
 using System.IO;
 using Tools.DotNETCommon;
 
-public class AutoSplitters : ModuleRules
+public class AutoSplittersContinued : ModuleRules
 {
-	public AutoSplitters(ReadOnlyTargetRules Target) : base(Target)
+	public AutoSplittersContinued(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		bLegacyPublicIncludePaths = false;

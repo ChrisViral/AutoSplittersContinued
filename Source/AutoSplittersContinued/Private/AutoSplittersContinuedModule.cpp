@@ -1,4 +1,4 @@
-﻿#include "AutoSplittersModule.h"
+﻿#include "AutoSplittersContinuedModule.h"
 
 #include "Patching/NativeHookManager.h"
 
@@ -15,18 +15,19 @@
 #include "Registry/ModContentRegistry.h"
 #include "Resources/FGBuildingDescriptor.h"
 #include "ModLoading/PluginModuleLoader.h"
+#include "UObject/CoreRedirects.h"
 
 DEFINE_LOG_CATEGORY(LogGame);
 
 // #pragma optimize( "", off )
 
-void FAutoSplittersModule::OnSplitterLoadedFromSaveGame(AMFGBuildableAutoSplitter* Splitter)
+void FAutoSplittersContinuedModule::OnSplitterLoadedFromSaveGame(AMFGBuildableAutoSplitter* Splitter)
 {
 	// just record that we have loaded a splitter, needed e.g. for detection of legacy save game loading
 	++mLoadedSplitterCount;
 }
 
-void FAutoSplittersModule::ScheduleDismantle(AMFGBuildableAutoSplitter* Splitter)
+void FAutoSplittersContinuedModule::ScheduleDismantle(AMFGBuildableAutoSplitter* Splitter)
 {
 	if (mLoadedSplitterCount == 0)
 	{
@@ -35,7 +36,7 @@ void FAutoSplittersModule::ScheduleDismantle(AMFGBuildableAutoSplitter* Splitter
 	mDoomedSplitters.Add(Splitter);
 }
 
-void FAutoSplittersModule::ReplacePreComponentFixSplitters(UWorld* World, AAutoSplittersSubsystem* AutoSplittersSubsystem)
+void FAutoSplittersContinuedModule::ReplacePreComponentFixSplitters(UWorld* World, AAutoSplittersSubsystem* AutoSplittersSubsystem)
 {
 	const auto& Config = AutoSplittersSubsystem->mConfig;
 
@@ -178,8 +179,18 @@ void FAutoSplittersModule::ReplacePreComponentFixSplitters(UWorld* World, AAutoS
 	}
 }
 
-void FAutoSplittersModule::StartupModule()
+void FAutoSplittersContinuedModule::StartupModule()
 {
+	/*
+	// Remapping old mod reference files 
+	TArray<FCoreRedirect> Remaps;
+	Remaps.Add(FCoreRedirect(ECoreRedirectFlags::Type_Class | ECoreRedirectFlags::Option_MatchSubstring,
+		TEXT("/Script/AutoSplitters"), TEXT("/Script/AutoSplittersContinued")));
+	Remaps.Add(FCoreRedirect(ECoreRedirectFlags::Type_Package | ECoreRedirectFlags::Option_MatchSubstring,
+		TEXT("/AutoSplitters/"), TEXT("/AutoSplittersContinued/")));
+	FCoreRedirects::AddRedirectList(Remaps, TEXT("FAutoSplittersContinuedModule::StartupModule"));
+	*/
+
 
 #if UE_BUILD_SHIPPING
 
@@ -342,8 +353,8 @@ void FAutoSplittersModule::StartupModule()
 
 }
 
-const FName FAutoSplittersModule::ModReference("AutoSplitters");
+const FName FAutoSplittersContinuedModule::ModReference("AutoSplittersContinued");
 
 // #pragma optimize( "", on )
 
-IMPLEMENT_GAME_MODULE(FAutoSplittersModule,AutoSplitters);
+IMPLEMENT_GAME_MODULE(FAutoSplittersContinuedModule,AutoSplittersContinued);

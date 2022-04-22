@@ -8,7 +8,7 @@
 #include "Buildables/MFGBuildableAutoSplitter.h"
 #include "Modules/ModuleManager.h"
 
-class FAutoSplittersModule : public IModuleInterface
+class FAutoSplittersContinuedModule : public IModuleInterface
 {
 	friend class AMFGBuildableAutoSplitter;
 	friend class AAutoSplittersSubsystem;
@@ -43,8 +43,8 @@ public:
 
 	static const FName ModReference;
 
-	static FAutoSplittersModule* Get()
+	static FAutoSplittersContinuedModule* Get()
 	{
-		return FModuleManager::GetModulePtr<FAutoSplittersModule>(ModReference);
+		return FModuleManager::GetModulePtr<FAutoSplittersContinuedModule>(ModReference);
 	}
 };

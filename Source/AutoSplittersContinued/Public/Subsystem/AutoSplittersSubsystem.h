@@ -26,11 +26,11 @@ enum class EAAutoSplittersSubsystemSeverity : uint8
  *
  */
 UCLASS(BlueprintType,NotBlueprintable)
-class AUTOSPLITTERS_API AAutoSplittersSubsystem : public AModSubsystem, public IFGSaveInterface
+class AUTOSPLITTERSCONTINUED_API AAutoSplittersSubsystem : public AModSubsystem, public IFGSaveInterface
 {
     GENERATED_BODY()
 
-    friend class FAutoSplittersModule;
+    friend class FAutoSplittersContinuedModule;
 
     static AAutoSplittersSubsystem* sCachedSubsystem;
 

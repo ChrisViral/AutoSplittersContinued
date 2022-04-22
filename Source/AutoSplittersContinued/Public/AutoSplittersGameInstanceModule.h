@@ -12,7 +12,7 @@
  *
  */
 UCLASS(BlueprintType)
-class AUTOSPLITTERS_API UAutoSplittersGameInstanceModule : public UGameInstanceModule
+class AUTOSPLITTERSCONTINUED_API UAutoSplittersGameInstanceModule : public UGameInstanceModule
 {
     GENERATED_BODY()
 
