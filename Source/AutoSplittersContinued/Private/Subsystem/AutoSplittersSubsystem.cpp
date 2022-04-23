@@ -33,13 +33,13 @@ void AAutoSplittersSubsystem::Init()
     Super::Init();
 
 	FModInfo ModInfo;
-    GEngine->GetEngineSubsystem<UModLoadingLibrary>()->GetLoadedModInfo("AutoSplitters",ModInfo);
+    GEngine->GetEngineSubsystem<UModLoadingLibrary>()->GetLoadedModInfo("AutoSplittersContinued",ModInfo);
     mRunningModVersion = ModInfo.Version;
 
     // preload configuration
     ReloadConfig();
 
-    UE_LOG(LogAutoSplitters,Display,TEXT("AAutoSplittersSubsytem initialized: AutoSplitters %s"),*GetRunningModVersion().ToString());
+    UE_LOG(LogAutoSplitters,Display,TEXT("AAutoSplittersSubsytem initialized: AutoSplittersContinued %s"),*GetRunningModVersion().ToString());
 
     // figure out if this a loaded save file or a new session
     if (GetLoadedModVersion().Compare(New_Session) == 0)
@@ -65,7 +65,7 @@ void AAutoSplittersSubsystem::Init()
         UE_LOG(
             LogAutoSplitters,
             Display,
-            TEXT("Savegame was created with AutoSplitters %s"),
+            TEXT("Savegame was created with AutoSplittersContinued %s"),
             GetLoadedModVersion().Compare(ModVersion_Legacy) == 0 ? TEXT("legacy version < 0.3.9") : *GetLoadedModVersion().ToString()
             );
     }
@@ -111,7 +111,7 @@ void AAutoSplittersSubsystem::NotifyChat(ESeverity Severity, FString Msg) const
     auto ChatManager = AFGChatManager::Get(GetWorld());
 
     FChatMessageStruct Message;
-    Message.MessageString = FString::Printf(TEXT("AutoSplitters: %s"),*Msg);
+    Message.MessageString = FString::Printf(TEXT("AutoSplittersContinued: %s"),*Msg);
     Message.MessageType = EFGChatMessageType::CMT_SystemMessage;
     Message.ServerTimeStamp = GetWorld()->TimeSeconds;
 
