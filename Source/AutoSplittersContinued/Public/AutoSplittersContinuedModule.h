@@ -8,40 +8,43 @@
 #include "Buildables/MFGBuildableAutoSplitter.h"
 #include "Modules/ModuleManager.h"
 
-class FAutoSplittersContinuedModule final : public IModuleInterface
+class FAutoSplittersContinuedModule : public IModuleInterface
 {
+	friend class AMFGBuildableAutoSplitter;
+	friend class AAutoSplittersSubsystem;
+
+	TArray<
+		std::tuple<
+			AMFGBuildableAutoSplitter*,
+			TInlineComponentArray<UFGFactoryConnectionComponent*, 2>,
+			TInlineComponentArray<UFGFactoryConnectionComponent*, 4>
+		>
+	> mPreComponentFixSplitters;
+
+	int32 mLoadedSplitterCount;
+
+	TArray<AMFGBuildableAutoSplitter*> mDoomedSplitters;
+
+	void OnSplitterLoadedFromSaveGame(AMFGBuildableAutoSplitter* Splitter);
+	void ScheduleDismantle(AMFGBuildableAutoSplitter* Splitter);
+
+	bool HaveLoadedSplitters() const
+	{
+		return mLoadedSplitterCount > 0;
+	}
+
+	void ReplacePreComponentFixSplitters(UWorld* World, AAutoSplittersSubsystem* AutoSplittersSubsystem);
+
 public:
-    static constexpr bool IsAlphaVersion = true;
 
-    virtual void StartupModule() override;
+	static const bool IsAlphaVersion = true;
 
-    static const FName ModReference;
+	virtual void StartupModule() override;
 
-    static FAutoSplittersContinuedModule* Get()
-    {
-        return FModuleManager::GetModulePtr<FAutoSplittersContinuedModule>(ModReference);
-    }
+	static const FName ModReference;
 
-private:
-    friend class AMFGBuildableAutoSplitter;
-    friend class AAutoSplittersSubsystem;
-
-    TArray<std::tuple<AMFGBuildableAutoSplitter*,
-                      TInlineComponentArray<UFGFactoryConnectionComponent*, 2>,
-                      TInlineComponentArray<UFGFactoryConnectionComponent*, 4>>> mPreComponentFixSplitters;
-
-    int32 mLoadedSplitterCount;
-
-    TArray<AMFGBuildableAutoSplitter*> mDoomedSplitters;
-
-    void OnSplitterLoadedFromSaveGame(AMFGBuildableAutoSplitter* Splitter);
-
-    void ScheduleDismantle(AMFGBuildableAutoSplitter* Splitter);
-
-    bool HaveLoadedSplitters() const
-    {
-        return mLoadedSplitterCount > 0;
-    }
-
-    void ReplacePreComponentFixSplitters(UWorld* World, AAutoSplittersSubsystem* AutoSplittersSubsystem);
+	static FAutoSplittersContinuedModule* Get()
+	{
+		return FModuleManager::GetModulePtr<FAutoSplittersContinuedModule>(ModReference);
+	}
 };
