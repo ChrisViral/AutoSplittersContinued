@@ -1,0 +1,7 @@
+# Unreal folders
+
+[Bb]inaries/
+[Ii]ntermediate/
+[Ss]aved/
+[Mm]etadata/
+*.bak
