@@ -19,5 +19,4 @@ enum class EAutoSplittersSerializationVersion : uint8
     // keep at the bottom of the list
     VersionPlusOne,
     Latest = VersionPlusOne - 1
-
 };

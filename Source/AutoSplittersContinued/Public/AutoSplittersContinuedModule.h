@@ -8,43 +8,40 @@
 #include "Buildables/MFGBuildableAutoSplitter.h"
 #include "Modules/ModuleManager.h"
 
-class FAutoSplittersContinuedModule : public IModuleInterface
+class FAutoSplittersContinuedModule final : public IModuleInterface
 {
-	friend class AMFGBuildableAutoSplitter;
-	friend class AAutoSplittersSubsystem;
-
-	TArray<
-		std::tuple<
-			AMFGBuildableAutoSplitter*,
-			TInlineComponentArray<UFGFactoryConnectionComponent*, 2>,
-			TInlineComponentArray<UFGFactoryConnectionComponent*, 4>
-		>
-	> mPreComponentFixSplitters;
-
-	int32 mLoadedSplitterCount;
-
-	TArray<AMFGBuildableAutoSplitter*> mDoomedSplitters;
-
-	void OnSplitterLoadedFromSaveGame(AMFGBuildableAutoSplitter* Splitter);
-	void ScheduleDismantle(AMFGBuildableAutoSplitter* Splitter);
-
-	bool HaveLoadedSplitters() const
-	{
-		return mLoadedSplitterCount > 0;
-	}
-
-	void ReplacePreComponentFixSplitters(UWorld* World, AAutoSplittersSubsystem* AutoSplittersSubsystem);
-
 public:
+    static constexpr bool IsAlphaVersion = true;
 
-	static const bool IsAlphaVersion = true;
+    virtual void StartupModule() override;
 
-	virtual void StartupModule() override;
+    static const FName ModReference;
 
-	static const FName ModReference;
+    static FAutoSplittersContinuedModule* Get()
+    {
+        return FModuleManager::GetModulePtr<FAutoSplittersContinuedModule>(ModReference);
+    }
 
-	static FAutoSplittersContinuedModule* Get()
-	{
-		return FModuleManager::GetModulePtr<FAutoSplittersContinuedModule>(ModReference);
-	}
+private:
+    friend class AMFGBuildableAutoSplitter;
+    friend class AAutoSplittersSubsystem;
+
+    TArray<std::tuple<AMFGBuildableAutoSplitter*,
+                      TInlineComponentArray<UFGFactoryConnectionComponent*, 2>,
+                      TInlineComponentArray<UFGFactoryConnectionComponent*, 4>>> mPreComponentFixSplitters;
+
+    int32 mLoadedSplitterCount;
+
+    TArray<AMFGBuildableAutoSplitter*> mDoomedSplitters;
+
+    void OnSplitterLoadedFromSaveGame(AMFGBuildableAutoSplitter* Splitter);
+
+    void ScheduleDismantle(AMFGBuildableAutoSplitter* Splitter);
+
+    bool HaveLoadedSplitters() const
+    {
+        return mLoadedSplitterCount > 0;
+    }
+
+    void ReplacePreComponentFixSplitters(UWorld* World, AAutoSplittersSubsystem* AutoSplittersSubsystem);
 };

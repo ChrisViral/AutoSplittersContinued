@@ -1,32 +1,25 @@
 ﻿#pragma once
 
 #include "CoreMinimal.h"
-
 #include "FGPlayerController.h"
 #include "FGRemoteCallObject.h"
-
 #include "AutoSplittersRCO.generated.h"
 
 class AMFGBuildableAutoSplitter;
 
-/**
- *
- */
 UCLASS(NotBlueprintable)
-class AUTOSPLITTERSCONTINUED_API UAutoSplittersRCO : public UFGRemoteCallObject
+class AUTOSPLITTERSCONTINUED_API UAutoSplittersRCO final : public UFGRemoteCallObject
 {
     GENERATED_BODY()
 
 public:
-
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
-    static UAutoSplittersRCO* Get(UWorld* World)
+    static UAutoSplittersRCO* Get(const UWorld* World)
     {
         return Cast<UAutoSplittersRCO>(
             Cast<AFGPlayerController>(World->GetFirstPlayerController())->
-                GetRemoteCallObjectOfClass(UAutoSplittersRCO::StaticClass())
-            );
+                GetRemoteCallObjectOfClass(StaticClass()));
     }
 
     UFUNCTION(Server,Unreliable)
@@ -48,7 +41,6 @@ public:
     void BalanceNetwork(AMFGBuildableAutoSplitter* Splitter, bool RootOnly) const;
 
 private:
-
     UPROPERTY(Replicated)
     int32 Dummy;
 };
