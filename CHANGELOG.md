@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.0 - U5 Compatibility Update
+
+- Fixed compilation errors
+- Updated mod reference to AutoSplittersContinued
+- Update recipe and unlock costs:
+  - Recipe went from 2 Iron Plates to 1 Modular Frame, 1 Stator, 1 Computer
+  - Unlock cost went from 10 Iron Plates to 50 Modular Frames, 50 Computers
+  - Unlock location went from a Tier 1 Milestone to a Tier 5 Milestone
+- **WARNING** Previous saves made with this mod will *NOT* be compatible with this version. Due to mod reference changes, all existing auto splitters will be gone from your world.
+
 ## 0.4.0 - Alpha
 
 Add missing bits for multiplayer support
