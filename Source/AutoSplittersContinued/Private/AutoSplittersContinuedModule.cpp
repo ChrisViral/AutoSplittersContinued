@@ -357,4 +357,4 @@ const FName FAutoSplittersContinuedModule::ModReference("AutoSplittersContinued"
 
 // #pragma optimize( "", on )
 
-IMPLEMENT_GAME_MODULE(FAutoSplittersContinuedModule,AutoSplittersContinued);
+IMPLEMENT_GAME_MODULE(FAutoSplittersContinuedModule, AutoSplittersContinued);

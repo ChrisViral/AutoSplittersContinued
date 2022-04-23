@@ -52,7 +52,7 @@ public:
     /* Retrieves active configuration value and returns object of this struct containing it */
     static FAutoSplitters_ConfigStruct GetActiveConfig() {
         FAutoSplitters_ConfigStruct ConfigStruct{};
-        FConfigId ConfigId{"AutoSplitters", ""};
+        FConfigId ConfigId{"AutoSplittersContinued", ""};
         UConfigManager* ConfigManager = GEngine->GetEngineSubsystem<UConfigManager>();
         ConfigManager->FillConfigurationStruct(ConfigId, FDynamicStructInfo{FAutoSplitters_ConfigStruct::StaticStruct(), &ConfigStruct});
         return ConfigStruct;

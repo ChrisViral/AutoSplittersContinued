@@ -853,8 +853,7 @@ void AMFGBuildableAutoSplitter::Server_ReplicationEnabledTimeout()
 
 void AMFGBuildableAutoSplitter::FixupConnections()
 {
-
-    auto Module = FModuleManager::GetModulePtr<FAutoSplittersContinuedModule>("AutoSplittersContinued");
+    auto Module = FAutoSplittersContinuedModule::Get();
 
     TInlineComponentArray<UFGFactoryConnectionComponent*, 6> Connections;
     GetComponents(Connections);
