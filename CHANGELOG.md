@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1 - Input Rate Hotfix
+
+- Fixed an issue with input rate being force set to zero
+
 ## 0.5.0 - U5 Compatibility Update
 
 - Fixed compilation errors
