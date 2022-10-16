@@ -1,12 +1,12 @@
 {
 	"FileVersion": 3,
 	"Version": 0,
-	"SemVersion": "0.5.2",
-	"VersionName": "0.5.2",
+	"SemVersion": "0.5.4",
+	"VersionName": "0.5.4",
 	"FriendlyName": "Auto Splitters Continued",
 	"Description": "Auto-balancing splitters for the rest of us who don't want to build gigantic load balancers.",
 	"Category": "Modding",
-	"CreatedBy": "SteffenM, stupid_chris",
+	"CreatedBy": "SteffenM, stupid_chris, Alex",
 	"CreatedByURL": "https://github.com/ChrisViral/AutoSplittersContinued",
 	"DocsURL": "",
 	"MarketplaceURL": "",
@@ -15,7 +15,7 @@
 	"IsBetaVersion": false,
 	"IsExperimentalVersion": false,
 	"Installed": false,
-	"RemoteVersionRange": "^0.5.2",
+	"RemoteVersionRange": "^0.5.4",
 	"AcceptsAnyRemoteVersion": false,
 	"Modules": [
 		{
@@ -27,7 +27,7 @@
 	"Plugins": [
 		{
 			"Name": "SML",
-			"SemVersion": "^3.3.2",
+			"SemVersion": "^3.4.0",
 			"Enabled": true
 		}
 	]
