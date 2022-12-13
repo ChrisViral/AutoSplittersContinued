@@ -20,6 +20,8 @@ The full original license is available in a sperarate file.
 As the maintainer of this mod for the time being, it is not in my plans to make significant improvements to this mod. I'm not in capacity to take on more development workload at the moment, however this may change in the future.
 If it were to arise, I would try to fix reported bugs, but I cannot guarantee that fixes will be provided. This mod is available for use again, but support for it may be lacking.
 
+### I'd also like to make clear that I have no plans to support experimental releases of Satisfactory.
+
 If Steffen were to claim ownership again, I will gladly transfer it back to him without much delay.
 
 Steffen's original acknowledgements for his initial work on the mod are listed below.
