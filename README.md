@@ -1,3 +1,7 @@
+# Unforunately, Update 7 has thoroughly fooked this mod up. I sadly have neither the time nor in depth knowledge of the Satisfactory code to properly fix it, and at this point, I doubt it is worth it. Multiple alternatives exist by now that do most of what this can, sometimes even better. I'm afraid this might be the end of the road for AutoSplitters. So long dear friend.
+
+---
+
 # Satisfactory Auto Splitters
 
 Automatic load balancing of manifold-style production lines for the rest of us.
